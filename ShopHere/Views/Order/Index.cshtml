@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ShopHere.Models.Order>
+@{
+    ViewBag.Title = "Index";
+
+}
+
+<h2>Orders</h2>
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Order Id</th>
+            <th scope="col"> Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"> Time</th>
+            <th scope="col">Address</th>
+            <th scope="col">DeliveryStatus</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+        <tr>
+            <th scope="row">@order.OrderId</th>
+          
+            <td>@order.Item.ItemName</td>
+            <td>@order.Item.Price</td>
+            <td>@order.OrderPlacedTime</td>
+            <td>@order.Address</td>
+            @if (order.IsDelivered)
+            {
+                <td>Delivered</td>
+            }
+            else
+            {
+                <td>Not Delivered Yet</td>
+            }
+        </tr>
+        }
+
+        
+        </tbody>
+    </table>
+        
+

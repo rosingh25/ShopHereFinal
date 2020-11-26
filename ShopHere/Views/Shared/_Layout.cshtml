@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @Html.ActionLink("ShopHere", "Index", "Shopping", new { area = "" }, new { @class = "navbar-brand" })
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+
+                    @Html.ActionLink("View All Products", "Index", "Shopping", new { }, htmlAttributes: new { id = "All", @class = "nav-link " })
+                </li>
+
+            </ul>
+            <form action="/Shopping/SearchItemByCustomerIndex" method="post" class="form-inline my-2 my-lg-0 ">
+
+                <input class="form-control mr-sm-2" width="78" type="search" name="Search" placeholder="Search Item">
+                <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+
+            </form>
+
+
+
+
+            @Html.Partial("_LoginPartial")
+
+        </div>
+    </nav>
+    
+    <nav class="navbar  navbar-expand-lg navbar-dark bg-primary text-center">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2  mt-lg-0 ">
+                <li class="nav-item active mx-xl-5 btn-link ">
+
+                    @Html.ActionLink("Electronics", "CategoryFilter", "Shopping", new { category= "Electronics" }, htmlAttributes: new { id = "Home", @class = "nav-link " })
+                </li>
+
+                <li class="nav-item active mx-5 btn-link">
+
+                    @Html.ActionLink("Clothes", "CategoryFilter", "Shopping", new { category = "Clothes" }, htmlAttributes: new { id = "About", @class = "nav-link " })
+                </li>
+
+                <li class="nav-item active mx-5 btn-link">
+
+                    @Html.ActionLink("Kids", "CategoryFilter", "Shopping", new { category = "Kids" }, htmlAttributes: new { id = "Contact", @class = "nav-link " })
+                </li>
+
+                <li class="nav-item active mx-5 btn-link">
+
+                    @Html.ActionLink("HomeAndFurniture", "CategoryFilter", "Shopping", new { category = "HomeAndFurniture" }, htmlAttributes: new { id = "Contact", @class = "nav-link " })
+                </li>
+                <li class="nav-item active mx-5 btn-link">
+
+                    @Html.ActionLink("Sports", "CategoryFilter", "Shopping", new { category = "Sports" }, htmlAttributes: new { id = "Contact", @class = "nav-link " })
+                </li>
+                <li class="nav-item active mx-5 btn-link">
+
+                    @Html.ActionLink("Books", "CategoryFilter", "Shopping", new { category = "Books" }, htmlAttributes: new { id = "Contact", @class = "nav-link " })
+                </li>
+                <li class="nav-item active  mx-5 btn-link">
+
+                    @Html.ActionLink("Other", "CategoryFilter", "Shopping", new { category = "Other" }, htmlAttributes: new { id = "Contact", @class = "nav-link " })
+                </li>
+
+            </ul>
+<div>
+    <button class="btn-dark"> @Html.ActionLink("My Orders","Index","Order")</button>
+</div>           
+
+        </div>
+    </nav>
+
+    <br />
+    <div class="container body-content">
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ShopHere </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

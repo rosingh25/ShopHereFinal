@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ShopHere.Models.Item>
+@{
+    ViewBag.Title = "Category Filter";
+}
+
+
+<h3>Search Results</h3>
+
+<div class="row row-cols-1 row-cols-md-4">
+
+    @foreach (var item in Model)
+    {
+        <div class="col mb-4">
+
+
+            <div class="card">
+                <img src="~/Content/Images/ShoppingBag.jpg" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.ItemName</h5>
+                    <h6 class="card-text">Price : ₹ @item.Price</h6>
+                    <p class="card-text">@item.ItemDescription</p>
+
+                    @using (Html.BeginForm("BuyItem", "Shopping"))
+                    {
+                        <input type="hidden" name="Id" value="@item.Id" />
+                        <label class="my-1 mr-2" for="Quantity">Enter Quantity</label>
+                        <select class="custom-select my-1 mr-sm-2" name="Quantity" id="Quantity">
+                            @for (int i = 1; i <= item.Quantity; i++)
+                            {
+                                <option>@i</option>
+                            }
+                        </select>
+
+                        <br />
+                        <button class="btn btn-success float-right " type="submit">Buy Item</button>
+
+                    }
+                    <br />
+
+                    @if (item.Quantity > 0)
+                    {<br />
+                        <p class="card-text float-right"><small class="text-muted"> Available Quantity : @item.Quantity </small></p>
+                    }
+                    else
+                    {
+                        <br />
+                        <p class="card-text float-right "><small class=" text-danger"> Item Out of Stock </small></p>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div>
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center ">
+
+        <li class="page-item"><a class="page-link" href="~/Shopping/CategoryFilter/?pageNo=-1">Previous</a></li>
+
+        <li class="page-item"><a class="page-link disabled" href="~/Shopping/CategoryFilter/?pageNo=1">Next</a></li>
+    </ul>
+</nav>

@@ -1,0 +1,14 @@
+﻿@model ShopHere.Models.Order
+@{
+    ViewBag.Title = "OrderPlaced";
+}
+
+<br />
+
+<div class="jumbotron">
+    <h1 class="display-4">Congratulations, Order Placed!!</h1>
+    <p class="lead">Please note order id for your reference : @Model.OrderId</p>
+    <hr class="my-4">
+    <p>Thanks for shopping, click below to continue shopping</p>
+    <a class="btn btn-primary btn-lg" href="~/" role="button">Continue Shopping</a>
+</div>

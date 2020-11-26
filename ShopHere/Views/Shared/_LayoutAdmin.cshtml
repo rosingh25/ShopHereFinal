@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        @Html.ActionLink("ShopHere", "ViewAllItems", "Admin", new { area = ""}, new { @class = "navbar-brand" })
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            <li class="nav-item active">
+
+                @Html.ActionLink("Customer View", "Index", "Shopping",new { }, htmlAttributes: new { id = "Home", @class = "nav-link " })
+            </li>
+
+            <li class="nav-item active">
+
+                @Html.ActionLink("All Items", "ViewAllItems", "Admin",new { }, htmlAttributes: new { id = "About", @class = "nav-link " })
+            </li>
+
+            <li class="nav-item active">
+
+                @Html.ActionLink("Add Item", "AddItemInView", "Admin",new { }, htmlAttributes: new { id = "AddItem", @class = "nav-link " })
+            </li>
+            <li class="nav-item active">
+
+                @Html.ActionLink("Orders", "ViewAllOrders", "Order",new { }, htmlAttributes: new { id = "AddItem", @class = "nav-link " })
+            </li>
+
+            
+
+        </ul>
+        <form action="/Admin/SearchItemByCustomerAdminIndex" method="post" class="form-inline my-2 my-lg-0 ">
+
+            <input class="form-control mr-sm-2" width="78" type="search" name="Search" placeholder="Search Item">
+            <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+
+        </form>
+
+
+
+
+        @Html.Partial("_LoginPartial")
+
+    </div>
+    </nav>
+
+   <br />
+    <div class="container body-content">
+        
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - ShopHere </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,46 @@
+﻿@model ShopHere.ViewModels.AddItemViewModel
+@{
+    ViewBag.Title = "AddItemInView";
+}
+
+<h3>Adding Item Here</h3>
+
+@using (Html.BeginForm("AddItemToDb", "Admin"))
+{
+    <div>
+        
+        @Html.LabelFor(m => m.Item.ItemName)
+        @Html.TextBoxFor(m => m.Item.ItemName, null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.ItemName)
+    </div>
+    
+    <div>
+        @Html.LabelFor(m => m.Item.ItemDescription)
+        @Html.TextBoxFor(m => m.Item.ItemDescription, null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.ItemDescription)
+    </div>    
+
+    <div>
+        @Html.LabelFor(m => m.Item.Price)
+        @Html.TextBoxFor(m => m.Item.Price, null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.Price)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Item.Quantity)
+        @Html.TextBoxFor(m => m.Item.Quantity, null, htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.Quantity)
+    </div>
+
+    <div>
+        @Html.LabelFor(m => m.Item.CategoryId)
+        @Html.DropDownListFor(m => m.Item.CategoryId, new SelectList(Model.Categories ,"Id", "CategoryName"),"Select Category", htmlAttributes: new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Item.CategoryId)    
+    </div>
+    @Html.HiddenFor(m => m.Item.AdminName, new {@Value = User.Identity.Name })
+    <br />
+    <button type="submit" name="Submit" class="btn btn-primary mb-2 ">Create Item</button>
+
+    }
+
+

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ShopHere.Models.Order>
+@{
+    ViewBag.Title = "ViewAllOrders";
+
+}
+<form action="" class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search Order Id" name="id" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+</form>
+<br />
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Customer Name</th>
+            <th scope="col"> Item Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"> Time</th>
+            <th scope="col">Address</th>
+            <th scope="col">Delivery Status</th>
+            <th scope="col">Change Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{ 
+            if (!Model.Any())
+            {
+                         <h5 class="text-center"> No Item Found</h5>
+             
+            }
+        }
+        @foreach (var order in Model)
+        {
+            <tr>
+                <th scope="row">@order.OrderId</th>
+
+                <td>@order.CustomerName</td>
+                <td>@order.Item.ItemName</td>
+                <td>@order.Item.Price</td>
+                <td>@order.OrderPlacedTime</td>
+                <td>@order.Address</td>
+                @if (order.IsDelivered)
+                {
+                    <td>Delivered</td>
+                }
+                else
+                {
+                    <td>Not Delivered Yet</td>
+                }
+            <td>
+                <button class="btn btn-light btn-outline-dark">@Html.ActionLink("Delivered", "OrderStatusChange", "Order", new { id = order.OrderId }, null) </button>
+            </td>
+            </tr>
+        }
+
+
+    </tbody>
+</table>
+
+
