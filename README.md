@@ -18,7 +18,7 @@ Steps to to download and load project in visual studio:
   7. add-migration FirstMigration.
   
   8. At the end of inside Up() method in 2020..._ FirstMigration of Migrations folder, paste -> Pending Migration File.txt content of PendingMigration folder and save the files.   
-  9. Delete App_Data folder from project, right click on project -> Add Asp.Net folder -> App_Data.
+  9. Delete App_Data folder from project, right click on project -> Add -> Asp.Net folder -> App_Data.
   
   10. in Package Manager Console -> run below No. 11 command.
   
